@@ -10,6 +10,6 @@ export default NextAuth({
             clientSecret: process.env.GOOGLE_CLIENT_SECRET
         }),
     ],
-    adapter: FirebaseAdapter(db);
+    adapter: FirebaseAdapter(db)
 
 })

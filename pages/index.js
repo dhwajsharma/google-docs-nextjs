@@ -20,7 +20,7 @@ export default function Home() {
 
       <Header />
 
-      <section className="bg-[#f8f9fa] pb-10 px-10">
+      <section className="select-none bg-[#f8f9fa] pb-10 px-10">
         <div className="max-w-3xl mx-auto">
           <div className="flex items-center justify-between py-6">
             <h2 className="text-gray-700 text-lg">Start a new Document</h2>
@@ -43,7 +43,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-white px-10 md:px-0 ">
+      <section className="select-none bg-white px-10 md:px-0 ">
         <div className="max-w-3xl mx-auto py-8 text-sm text-gray-700">
           <div className="flex items-center justify-between pb-5">
             <h2 className="font-medium flex-grow">My Documents</h2>
@@ -54,4 +54,14 @@ export default function Home() {
       </section>
     </div>
   )
+}
+
+
+export async function getServerSideProps(context) {
+  const session = await getSession(context)
+  return {
+    props: {
+      session
+    }
+  }
 }
