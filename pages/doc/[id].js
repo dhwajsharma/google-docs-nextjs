@@ -1,9 +1,10 @@
 import Button from "@material-tailwind/react/Button";
 import Icon from "@material-tailwind/react/Icon";
-import { useSession } from "next-auth/client"
+import { getSession, useSession } from "next-auth/client"
 import { useRouter } from "next/dist/client/router";
 import { useDocumentOnce } from "react-firebase-hooks/firestore";
 import Login from "../../components/Login";
+import TextEditor from "../../components/TextEditor";
 import { db } from "../../firebase";
 
 
@@ -55,10 +56,19 @@ const Doc = () => {
 
             </header>
 
-
+            <TextEditor />
 
         </div>
     )
 }
 
 export default Doc
+
+export async function getServerSideProps(context) {
+    const session = await getSession(context);
+    return {
+        props: {
+            session
+        }
+    }
+}
